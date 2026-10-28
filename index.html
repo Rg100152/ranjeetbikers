@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RanjeetBikers — Premium Bike Rental</title>
+<meta name="description" content="India's cleanest bike rental platform - Varanasi, Lucknow, Prayagraj, Delhi-NCR">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #070b14; color: #fff; min-height: 100vh; overflow-x: hidden;
+  line-height: 1.5; -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+a { color: inherit; text-decoration: none; }
+input, select, textarea { font-family: inherit; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #0a0f1d; }
+::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #ff5722; }
+
+:root {
+  --brand: #ff5722; --brand-600: #ea580c; --brand-400: #fb923c;
+  --mid-950: #070b14; --mid-900: #0a0f1d; --mid-850: #0f172a;
+  --mid-800: #131e36; --mid-700: #1e293b; --mid-600: #334155;
+  --emerald: #10b981; --red: #ef4444; --amber: #f59e0b;
+}
+
+.container { max-width: 1280px; margin: 0 auto; padding: 0 16px; }
+.row { display: flex; } .col { display: flex; flex-direction: column; }
+.items-center { align-items: center; } .items-start { align-items: flex-start; } .items-end { align-items: flex-end; }
+.justify-between { justify-content: space-between; } .justify-center { justify-content: center; }
+.gap-1 { gap: 4px; } .gap-2 { gap: 8px; } .gap-3 { gap: 12px; } .gap-4 { gap: 16px; } .gap-5 { gap: 20px; } .gap-6 { gap: 24px; }
+.flex-wrap { flex-wrap: wrap; } .flex-1 { flex: 1; } .flex-grow { flex-grow: 1; }
+.grid { display: grid; } .w-full { width: 100%; } .hidden { display: none !important; }
+.relative { position: relative; } .absolute { position: absolute; }
+.text-center { text-align: center; } .text-right { text-align: right; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.mt-1 { margin-top: 4px; } .mt-2 { margin-top: 8px; } .mt-3 { margin-top: 12px; }
+.mt-4 { margin-top: 16px; } .mt-6 { margin-top: 24px; } .mt-8 { margin-top: 32px; }
+.mt-12 { margin-top: 48px; } .mt-16 { margin-top: 64px; }
+.mb-1 { margin-bottom: 4px; } .mb-2 { margin-bottom: 8px; } .mb-3 { margin-bottom: 12px; }
+.mb-4 { margin-bottom: 16px; } .mb-6 { margin-bottom: 24px; } .mb-8 { margin-bottom: 32px; }
+.mb-10 { margin-bottom: 40px; }
+.p-2 { padding: 8px; } .p-3 { padding: 12px; } .p-4 { padding: 16px; } .p-5 { padding: 20px; }
+.p-6 { padding: 24px; } .p-8 { padding: 32px; } .p-12 { padding: 48px; }
+.py-3 { padding-top: 12px; padding-bottom: 12px; }
+.py-4 { padding-top: 16px; padding-bottom: 16px; }
+.py-6 { padding-top: 24px; padding-bottom: 24px; }
+.py-8 { padding-top: 32px; padding-bottom: 32px; }
+.py-10 { padding-top: 40px; padding-bottom: 40px; }
+.py-12 { padding-top: 48px; padding-bottom: 48px; }
+.py-16 { padding-top: 64px; padding-bottom: 64px; }
+.px-3 { padding-left: 12px; padding-right: 12px; }
+.px-4 { padding-left: 16px; padding-right: 16px; }
+.px-5 { padding-left: 20px; padding-right: 20px; }
+.px-6 { padding-left: 24px; padding-right: 24px; }
+.px-8 { padding-left: 32px; padding-right: 32px; }
+.pt-2 { padding-top: 8px; } .pt-3 { padding-top: 12px; } .pt-4 { padding-top: 16px; }
+.pb-4 { padding-bottom: 16px; } .pb-5 { padding-bottom: 20px; } .pb-6 { padding-bottom: 24px; }
+.pl-4 { padding-left: 16px; }
+.rounded { border-radius: 6px; } .rounded-lg { border-radius: 8px; } .rounded-xl { border-radius: 12px; }
+.rounded-2xl { border-radius: 16px; } .rounded-3xl { border-radius: 24px; } .rounded-full { border-radius: 9999px; }
+.text-xs { font-size: 12px; } .text-sm { font-size: 14px; } .text-base { font-size: 16px; }
+.text-lg { font-size: 18px; } .text-xl { font-size: 20px; } .text-2xl { font-size: 24px; }
+.text-3xl { font-size: 30px; } .text-4xl { font-size: 36px; } .text-5xl { font-size: 48px; }
+.font-medium { font-weight: 500; } .font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; } .font-black { font-weight: 900; }
+.mono { font-family: ui-monospace, 'SF Mono', Monaco, monospace; }
+.uppercase { text-transform: uppercase; }
+.tracking-wider { letter-spacing: 0.05em; }
+.tracking-widest { letter-spacing: 0.1em; }
+.leading-relaxed { line-height: 1.7; } .leading-snug { line-height: 1.35; }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.text-white { color: #fff; } .text-brand { color: var(--brand); }
+.text-slate-300 { color: #cbd5e1; } .text-slate-400 { color: #94a3b8; } .text-slate-500 { color: #64748b; }
+.text-amber-400 { color: var(--amber); } .text-emerald { color: var(--emerald); } .text-red { color: var(--red); }
+.bg-brand { background: var(--brand); } .bg-mid-950 { background: var(--mid-950); }
+.bg-mid-900 { background: var(--mid-900); } .bg-mid-800 { background: var(--mid-800); }
+.border-brand { border-color: var(--brand); } .border-slate { border-color: var(--mid-600); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 10px 20px; border-radius: 12px; font-weight: 700; font-size: 14px;
+  transition: all 0.2s ease; cursor: pointer; white-space: nowrap; }
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: linear-gradient(135deg, var(--brand), var(--brand-600)); color: #fff;
+  box-shadow: 0 8px 20px -8px rgba(255,87,34,0.5); }
+.btn-primary:hover { box-shadow: 0 12px 24px -8px rgba(255,87,34,0.7); transform: translateY(-1px); }
+.btn-secondary { background: var(--mid-700); color: #fff; }
+.btn-secondary:hover { background: var(--mid-600); }
+.btn-ghost { background: transparent; color: var(--slate-300); }
+.btn-ghost:hover { background: var(--mid-700); color: #fff; }
+.btn-danger { background: transparent; color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+.btn-danger:hover { background: rgba(239,68,68,0.1); }
+.btn-sm { padding: 6px 12px; font-size: 12px; border-radius: 8px; }
+.btn-lg { padding: 14px 28px; font-size: 16px; }
+.btn-block { width: 100%; }
+
+.glass { background: rgba(19, 30, 54, 0.7); backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+.card { border-radius: 16px; }
+
+.input, .select, .textarea { width: 100%; padding: 10px 14px; background: var(--mid-950);
+  border: 1px solid var(--mid-600); border-radius: 12px; color: #fff; font-size: 14px;
+  outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+.input:focus, .select:focus, .textarea:focus {
+  border-color: var(--brand); box-shadow: 0 0 0 3px rgba(255,87,34,0.15); }
+.input::placeholder { color: #64748b; }
+.label { display: block; font-size: 12px; font-weight: 600; color: #cbd5e1; margin-bottom: 6px; }
+
+input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 6px;
+  background: var(--mid-700); border-radius: 999px; outline: none; }
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 18px; height: 18px;
+  background: var(--brand); border-radius: 50%; cursor: pointer;
+  border: 2px solid var(--mid-950); box-shadow: 0 0 8px rgba(255,87,34,0.6); transition: transform 0.15s; }
+input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+input[type="range"]::-moz-range-thumb {
+  width: 18px; height: 18px; background: var(--brand); border-radius: 50%;
+  border: 2px solid var(--mid-950); cursor: pointer; }
+
+.navbar { position: sticky; top: 0; z-index: 40;
+  background: rgba(10, 15, 29, 0.9); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.07); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.nav-logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.logo-box { width: 40px; height: 40px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--brand), #f59e0b);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 900; font-size: 20px;
+  box-shadow: 0 4px 12px rgba(255,87,34,0.3); }
+.logo-text { font-weight: 900; font-size: 20px; line-height: 1; }
+.logo-tag { font-size: 10px; color: #64748b; letter-spacing: 0.1em; text-transform: uppercase; }
+
+.nav-tabs { display: none; align-items: center; gap: 4px;
+  background: rgba(10, 15, 29, 0.8); padding: 6px; border-radius: 999px; border: 1px solid var(--mid-700); }
+.nav-tab { padding: 8px 16px; border-radius: 999px; font-size: 13px; font-weight: 600;
+  color: #cbd5e1; transition: all 0.2s ease; position: relative; }
+.nav-tab:hover { color: #fff; background: rgba(30,41,59,0.5); }
+.nav-tab.active { color: #fff; background: var(--mid-700); }
+.nav-badge { display: inline-block; margin-left: 4px; padding: 1px 6px;
+  font-size: 10px; font-weight: 700; background: var(--brand); color: #fff; border-radius: 999px; }
+
+.nav-actions { display: none; align-items: center; gap: 12px; }
+.helpline { display: flex; align-items: center; gap: 6px; color: #cbd5e1; font-weight: 700; font-size: 14px; }
+.helpline:hover { color: var(--brand); }
+
+.mobile-toggle { display: block; padding: 8px; color: #cbd5e1; border-radius: 8px; }
+.mobile-toggle:hover { background: var(--mid-700); }
+
+.mobile-menu { overflow: hidden; max-height: 0; opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.25s ease;
+  background: var(--mid-900); border-bottom: 1px solid var(--mid-700); }
+.mobile-menu.open { max-height: 500px; opacity: 1; }
+.mobile-menu-inner { padding: 12px 16px 20px; }
+.mobile-link { display: block; width: 100%; text-align: left;
+  padding: 10px 12px; border-radius: 10px; font-size: 14px; font-weight: 600;
+  color: #cbd5e1; transition: background 0.15s; }
+.mobile-link:hover { background: var(--mid-700); color: #fff; }
+
+.icon { display: inline-block; width: 20px; height: 20px; vertical-align: middle; flex-shrink: 0; }
+.icon-sm { width: 16px; height: 16px; } .icon-lg { width: 24px; height: 24px; }
+.icon-xl { width: 32px; height: 32px; } .icon-2xl { width: 40px; height: 40px; }
+
+.hero { position: relative; min-height: 560px; display: flex; align-items: center;
+  justify-content: center; overflow: hidden; padding: 64px 16px; }
+.hero-bg { position: absolute; inset: 0; z-index: 0; background-size: cover;
+  background-position: center; transition: opacity 0.6s ease, background-image 0.6s ease;
+  transform: scale(1.05); }
+.hero-overlay { position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to top, var(--mid-950) 0%, rgba(7,11,20,0.85) 50%, rgba(7,11,20,0.5) 100%); }
+.hero-content { position: relative; z-index: 2; text-align: center; max-width: 1100px; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 16px; border-radius: 999px;
+  background: rgba(255,255,255,0.1); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fbbf24; font-size: 13px; font-weight: 600; margin-bottom: 24px; }
+.hero-title { font-size: 40px; font-weight: 900; line-height: 1.05;
+  margin-bottom: 16px; text-transform: uppercase; letter-spacing: -0.02em; }
+.hero-title .accent { background: linear-gradient(90deg, var(--brand), #fbbf24);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent; }
+.hero-subtitle { color: #cbd5e1; font-size: 16px; max-width: 600px;
+  margin: 0 auto 32px; line-height: 1.6; }
+.hero-stats { display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 12px; max-width: 800px; margin: 0 auto 32px; }
+.stat-card { background: rgba(19, 30, 54, 0.7); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid var(--brand);
+  padding: 16px; border-radius: 16px; text-align: left; }
+.stat-num { font-size: 28px; font-weight: 800; display: block; }
+.stat-lbl { font-size: 12px; color: #94a3b8; }
+
+.search-box { background: rgba(19, 30, 54, 0.7); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15); border-radius: 24px;
+  padding: 24px; max-width: 1100px; margin: 0 auto;
+  box-shadow: 0 20px 40px -12px rgba(0,0,0,0.6); text-align: left; }
+.search-grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
+
+.cats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.cat-card { background: rgba(19, 30, 54, 0.7); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08); padding: 20px; border-radius: 16px;
+  text-align: center; cursor: pointer; transition: all 0.3s ease; }
+.cat-card:hover { transform: translateY(-4px); border-color: rgba(255,87,34,0.6); }
+.cat-icon { width: 48px; height: 48px; margin: 0 auto 12px; border-radius: 12px;
+  background: rgba(255,87,34,0.1); display: flex; align-items: center; justify-content: center;
+  color: var(--brand); transition: all 0.3s; }
+.cat-card:hover .cat-icon { background: var(--brand); color: #fff; }
+.cat-name { font-weight: 700; font-size: 14px; }
+.cat-sub { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+
+.bikes-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+.bike-card { background: rgba(19, 30, 54, 0.7); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden;
+  transition: all 0.3s ease; display: flex; flex-direction: column; }
+.bike-card:hover { transform: translateY(-4px); border-color: rgba(255,87,34,0.5);
+  box-shadow: 0 12px 30px -12px rgba(255,87,34,0.35); }
+.bike-img-wrap { position: relative; height: 180px; overflow: hidden; background: var(--mid-950); }
+.bike-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.bike-card:hover .bike-img-wrap img { transform: scale(1.05); }
+.bike-img-overlay { position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(7,11,20,0.8), transparent); }
+.bike-badge { position: absolute; top: 12px; left: 12px;
+  background: rgba(7,11,20,0.85); color: #fff; padding: 4px 10px;
+  border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+.heart-btn { position: absolute; top: 12px; right: 12px;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(7,11,20,0.8); border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: #cbd5e1; transition: all 0.2s; }
+.heart-btn:hover { background: rgba(7,11,20,1); color: #fff; }
+.heart-btn.active { color: var(--brand); }
+.heart-btn.active svg { fill: currentColor; }
+.bike-img-meta { position: absolute; bottom: 8px; left: 12px; right: 12px;
+  display: flex; justify-content: space-between; font-size: 11px; color: #fff; }
+.bike-img-meta span { background: rgba(0,0,0,0.65); padding: 2px 8px; border-radius: 4px; }
+.bike-img-meta .rating { color: #fbbf24; font-weight: 700; }
+
+.bike-info { padding: 16px; }
+.bike-name { font-weight: 700; font-size: 16px; line-height: 1.3;
+  cursor: pointer; transition: color 0.2s; }
+.bike-name:hover { color: var(--brand); }
+.bike-specs { font-size: 11px; color: #94a3b8; margin-top: 6px; display: flex; gap: 8px; }
+
+.bike-footer { margin-top: auto; padding: 16px; padding-top: 0;
+  border-top: 1px solid rgba(30,41,59,0.6); padding-top: 16px;
+  display: flex; align-items: center; justify-content: space-between; }
+.bike-price-lbl { font-size: 10px; color: #94a3b8; }
+.bike-price { font-size: 22px; font-weight: 900; color: var(--brand); }
+.bike-price small { font-size: 12px; color: #94a3b8; font-weight: 500; }
+
+.bike-list .bike-card { flex-direction: row; align-items: center; }
+.bike-list .bike-img-wrap { width: 200px; height: 140px; flex-shrink: 0; }
+.bike-list .bike-info { flex-grow: 1; }
+.bike-list .bike-footer { border-top: none; padding: 16px; }
+
+.fleet-layout { display: grid; gap: 24px; grid-template-columns: 1fr; }
+.filters { padding: 20px; border-radius: 16px; }
+.filter-group { margin-bottom: 20px; }
+.filter-group:last-child { margin-bottom: 0; }
+.filter-title { display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 12px; margin-bottom: 12px;
+  border-bottom: 1px solid rgba(51,65,85,0.6); font-weight: 700; font-size: 15px; }
+.radio-item { display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 8px; border-radius: 8px; cursor: pointer;
+  font-size: 13px; color: #cbd5e1; transition: background 0.15s; }
+.radio-item:hover { background: rgba(30,41,59,0.6); color: #fff; }
+.radio-item input { accent-color: var(--brand); margin-right: 8px; }
+.radio-item .count { color: #64748b; font-size: 11px; }
+
+.layout-toggle { display: flex; gap: 4px; background: var(--mid-900);
+  border: 1px solid var(--mid-600); padding: 4px; border-radius: 12px; }
+.layout-btn { padding: 6px; border-radius: 8px; color: #94a3b8; transition: all 0.2s; }
+.layout-btn:hover { color: #fff; }
+.layout-btn.active { background: var(--brand); color: #fff; }
+
+.breadcrumb { font-size: 12px; color: #94a3b8; display: flex; gap: 6px;
+  flex-wrap: wrap; margin-bottom: 16px; }
+.breadcrumb a { transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--brand); }
+
+.detail-layout { display: grid; gap: 24px; grid-template-columns: 1fr; }
+.detail-main-img { height: 320px; border-radius: 16px; overflow: hidden;
+  background: var(--mid-950); position: relative; border: 1px solid var(--mid-700); }
+.detail-main-img img { width: 100%; height: 100%; object-fit: cover; }
+.detail-img-overlay { position: absolute; inset: 0;
+  background: linear-gradient(to top, var(--mid-900), transparent 60%); }
+.detail-img-content { position: absolute; bottom: 16px; left: 20px; right: 20px; }
+.detail-img-content h1 { font-size: 26px; font-weight: 900; margin-top: 8px; }
+.specs-grid { display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 12px; padding: 16px; border-radius: 16px; margin-top: 20px; }
+.spec-item .spec-lbl { font-size: 11px; color: #94a3b8; display: block; }
+.spec-item .spec-val { font-weight: 700; font-size: 14px; }
+
+.booking-widget { padding: 20px; border-radius: 16px; }
+.price-breakdown { padding: 16px; border-radius: 12px; margin: 16px 0; font-size: 12px; }
+.price-row { display: flex; justify-content: space-between; margin-bottom: 8px; color: #94a3b8; }
+.price-row .val { color: #fff; font-weight: 500; }
+.price-row.total { margin-top: 8px; padding-top: 8px;
+  border-top: 1px solid var(--mid-700); color: #fff; font-weight: 700; font-size: 14px; }
+.price-row.total .val { color: var(--brand); font-size: 18px; font-weight: 900; }
+
+.steps-bar { display: flex; margin-bottom: 24px; align-items: center; }
+.step { display: flex; align-items: center; gap: 8px; flex: 1; }
+.step:last-child { flex: 0; }
+.step-num { width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; background: var(--mid-800); color: #94a3b8;
+  transition: all 0.3s; }
+.step.active .step-num, .step.done .step-num { background: var(--brand); color: #fff; }
+.step-lbl { font-size: 12px; font-weight: 600; color: #94a3b8; display: none; }
+.step.active .step-lbl { color: #fff; }
+.step-line { flex: 1; height: 2px; background: var(--mid-700); margin: 0 8px; }
+
+.checkout-card { padding: 24px; border-radius: 16px; }
+
+.voucher { padding: 24px; border-radius: 24px; max-width: 640px; margin: 0 auto; }
+.voucher-header { text-align: center; padding-bottom: 20px;
+  border-bottom: 1px solid var(--mid-700); margin-bottom: 20px; }
+.check-icon { width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(16,185,129,0.2); color: var(--emerald);
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
+.voucher-row { display: flex; justify-content: space-between; padding: 8px 0;
+  border-bottom: 1px solid rgba(30,41,59,0.8); font-size: 13px; }
+.voucher-row:last-of-type { border-bottom: none; }
+.voucher-total { padding-top: 12px; border-top: 2px solid var(--mid-700); margin-top: 12px; }
+
+.booking-card { padding: 20px; border-radius: 16px;
+  display: flex; flex-direction: column; gap: 16px; }
+.booking-card .booking-thumb { width: 80px; height: 64px; border-radius: 12px;
+  object-fit: cover; flex-shrink: 0; background: var(--mid-950); }
+.booking-info { flex-grow: 1; }
+.booking-meta { display: flex; gap: 6px; align-items: center;
+  margin-bottom: 4px; flex-wrap: wrap; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 6px;
+  font-size: 11px; font-weight: 700; }
+.tag-brand { background: rgba(255,87,34,0.15); color: var(--brand);
+  border: 1px solid rgba(255,87,34,0.3); }
+.tag-green { background: rgba(16,185,129,0.15); color: var(--emerald); }
+
+.about-grid { display: grid; gap: 32px; align-items: center; grid-template-columns: 1fr; }
+.founder-photos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.founder-photos img { width: 100%; border-radius: 16px; object-fit: cover; }
+.founder-photos .main-photo { grid-column: span 2; height: 280px;
+  border: 2px solid rgba(255,87,34,0.3);
+  box-shadow: 0 20px 40px -12px rgba(0,0,0,0.6); }
+.founder-photos .side-photo { height: 160px; }
+.founder-photos .wide-photo { grid-column: span 2; height: 200px; }
+
+.stat-mini { background: rgba(19, 30, 54, 0.7);
+  border: 1px solid rgba(255,255,255,0.08); padding: 12px; border-radius: 12px;
+  text-align: center; }
+.stat-mini .n { font-size: 24px; font-weight: 900; color: var(--brand); }
+.stat-mini .l { font-size: 11px; color: #94a3b8; }
+
+.timeline-item { padding: 16px; border-radius: 12px;
+  border-left: 4px solid var(--brand); margin-bottom: 12px; }
+.timeline-year { color: var(--brand); font-weight: 700; font-size: 13px; }
+.timeline-title { font-weight: 700; margin-top: 4px; font-size: 15px; }
+.timeline-desc { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+
+.faq-item { border-radius: 16px; overflow: hidden; margin-bottom: 12px; }
+.faq-question { width: 100%; text-align: left; padding: 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-weight: 700; font-size: 14px; transition: background 0.15s; }
+.faq-question:hover { background: rgba(30,41,59,0.4); }
+.faq-icon { transition: transform 0.3s; color: var(--brand); }
+.faq-answer { display: none; padding: 0 20px 20px; font-size: 13px;
+  color: #94a3b8; line-height: 1.7; }
+.faq-item.open .faq-answer { display: block; }
+.faq-item.open .faq-icon { transform: rotate(180deg); }
+
+.hub-card { padding: 20px; border-radius: 16px; }
+.hub-icon { width: 40px; height: 40px; border-radius: 12px;
+  background: rgba(255,87,34,0.2); color: var(--brand);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+
+.empty-state { padding: 48px 24px; text-align: center; border-radius: 24px; }
+.empty-icon { width: 64px; height: 64px; margin: 0 auto 16px;
+  border-radius: 16px; background: rgba(30,41,59,0.8);
+  display: flex; align-items: center; justify-content: center; color: var(--brand); }
+.empty-state h4 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.empty-state p { font-size: 13px; color: #94a3b8; max-width: 320px;
+  margin: 0 auto 16px; }
+
+.footer { background: var(--mid-950); border-top: 1px solid var(--mid-700);
+  padding: 40px 16px 16px; margin-top: 64px; }
+.footer-grid { display: grid; gap: 32px; grid-template-columns: 1fr;
+  max-width: 1280px; margin: 0 auto; }
+.footer h4 { font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+.footer ul { list-style: none; }
+.footer li { margin-bottom: 8px; font-size: 12px; color: #94a3b8; }
+.footer a { transition: color 0.2s; cursor: pointer; }
+.footer a:hover { color: var(--brand); }
+.footer-bottom { border-top: 1px solid var(--mid-700); margin-top: 32px;
+  padding-top: 16px; text-align: center; font-size: 11px; color: #64748b;
+  max-width: 1280px; margin-left: auto; margin-right: auto; }
+
+#toastContainer { position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+  display: flex; flex-direction: column; gap: 8px;
+  pointer-events: none; max-width: 320px; }
+.toast { pointer-events: auto; padding: 12px 16px; border-radius: 12px;
+  font-size: 13px; font-weight: 600; color: #fff;
+  box-shadow: 0 12px 24px -8px rgba(0,0,0,0.5);
+  transform: translateY(20px) scale(0.95); opacity: 0;
+  transition: all 0.3s ease; }
+.toast.show { transform: translateY(0) scale(1); opacity: 1; }
+.toast-success { background: var(--emerald); }
+.toast-error { background: var(--red); }
+.toast-info { background: var(--mid-800); border: 1px solid var(--mid-600); }
+
+.view { display: none; }
+.view.active { display: block; animation: fadeIn 0.35s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Founder badge */
+.founder-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; background: linear-gradient(135deg, rgba(255,87,34,0.2), rgba(251,146,60,0.15));
+  border: 1px solid rgba(255,87,34,0.4); border-radius: 999px;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--brand); margin-bottom: 16px;
+}
+.founder-badge::before {
+  content: ''; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--brand); box-shadow: 0 0 12px var(--brand);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.3); } }
+
+.contact-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; background: rgba(16,185,129,0.15);
+  border: 1px solid rgba(16,185,129,0.4); border-radius: 12px;
+  color: var(--emerald); font-weight: 700; font-size: 14px;
+  text-decoration: none; transition: all 0.2s;
+}
+.contact-badge:hover { background: rgba(16,185,129,0.25); transform: translateY(-1px); }
+
+@media (min-width: 640px) {
+  .hero-title { font-size: 56px; }
+  .hero-stats { grid-template-columns: repeat(4, 1fr); }
+  .search-grid { grid-template-columns: 1fr 1fr; }
+  .cats-grid { grid-template-columns: repeat(3, 1fr); }
+  .bikes-grid { grid-template-columns: repeat(2, 1fr); }
+  .step-lbl { display: block; }
+  .specs-grid { grid-template-columns: repeat(4, 1fr); }
+  .booking-card { flex-direction: row; align-items: center; }
+  .booking-card .booking-actions { flex-direction: column; align-items: flex-end; }
+}
+@media (min-width: 768px) {
+  .nav-tabs { display: flex; }
+  .nav-actions { display: flex; }
+  .mobile-toggle { display: none; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .container { padding: 0 32px; }
+  .hero-title { font-size: 72px; }
+  .search-grid { grid-template-columns: 1fr 1fr 1fr auto; }
+  .cats-grid { grid-template-columns: repeat(6, 1fr); }
+  .bikes-grid { grid-template-columns: repeat(3, 1fr); }
+  .fleet-layout { grid-template-columns: 280px 1fr; }
+  .detail-layout { grid-template-columns: 2fr 1fr; }
+  .about-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+  .booking-widget.sticky { position: sticky; top: 88px; }
+  .filters.sticky { position: sticky; top: 88px; }
+}
+
+@media print {
+  body * { visibility: hidden; }
+  #voucherPrint, #voucherPrint * { visibility: visible; }
+  #voucherPrint { position: absolute; left: 0; top: 0; width: 100%;
+    background: #fff !important; color: #000 !important; padding: 20px; }
+  #voucherPrint * { color: #000 !important; border-color: #ccc !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <div class="nav-logo" onclick="navigate('home')">
+        <div class="logo-box">R</div>
+        <div>
+          <span class="logo-text">Ranjeet<span style="color: var(--brand)">Bikers</span></span>
+          <p class="logo-tag">Drive Your Passion</p>
+        </div>
+      </div>
+      <nav class="nav-tabs" id="navTabs"></nav>
+      <div class="nav-actions">
+        <a href="tel:+917234999557" class="helpline">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          95557-85729
+        </a>
+        <button class="btn btn-primary" onclick="navigate('fleet')">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Book Now
+        </button>
+      </div>
+      <button class="mobile-toggle" onclick="toggleMobile()">
+        <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner" id="mobileMenuInner"></div>
+  </div>
+</header>
+
+<main>
+<!-- HOME -->
+<section id="view-home" class="view">
+  <div class="hero">
+    <div class="hero-bg" id="heroBg" style="background-image: url('https://yourimageshare.com/ib/aMJvcJeh7U.jpg');"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <div class="hero-badge">
+        <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+        #1 Rated Bike Rental in Varanasi & UP
+      </div>
+      <h1 class="hero-title">RIDE THE <span class="accent">FREEDOM</span></h1>
+      <p class="hero-subtitle">Rent verified superbikes, cruisers & scooters at genuine zero-hidden-cost rates. Instant delivery available.</p>
+      <div class="hero-stats">
+        <div class="stat-card"><span class="stat-num">40+</span><p class="stat-lbl">Bikes In Stock</p></div>
+        <div class="stat-card"><span class="stat-num">100%</span><p class="stat-lbl">Sanitized</p></div>
+        <div class="stat-card"><span class="stat-num">4.9★</span><p class="stat-lbl">2400+ Riders</p></div>
+        <div class="stat-card"><span class="stat-num">₹0</span><p class="stat-lbl">Hidden Charges</p></div>
+      </div>
+      <div class="search-box">
+        <form onsubmit="handleHeroSearch(event)" class="search-grid">
+          <div>
+            <label class="label">City / Hub</label>
+            <select id="searchCity" class="select">
+              <option value="Varanasi">Varanasi</option>
+              <option value="Lucknow">Lucknow</option>
+              <option value="Prayagraj">Prayagraj</option>
+              <option value="Delhi-NCR">Delhi-NCR</option>
+            </select>
+          </div>
+          <div><label class="label">Pickup</label><input type="datetime-local" id="searchPickup" required class="input"></div>
+          <div><label class="label">Return</label><input type="datetime-local" id="searchReturn" required class="input"></div>
+          <div style="display:flex;align-items:end;">
+            <button type="submit" class="btn btn-primary btn-block">
+              <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              Find My Ride
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-12">
+    <div class="row justify-between items-end mb-6">
+      <div>
+        <div class="text-brand text-xs font-black uppercase tracking-widest">Categories</div>
+        <h2 class="text-2xl font-black">Explore By Riding Style</h2>
+      </div>
+      <a href="#fleet" class="text-brand text-sm font-semibold">View All →</a>
+    </div>
+    <div class="cats-grid" id="homeCats"></div>
+  </div>
+
+  <div class="container pb-12">
+    <div class="row justify-between items-end mb-6">
+      <div>
+        <h2 class="text-2xl font-black">Popular In Varanasi</h2>
+        <p class="text-sm text-slate-400">Most rented machines for Ghat rides & highway tours</p>
+      </div>
+      <a href="#fleet" class="btn btn-secondary btn-sm">See All →</a>
+    </div>
+    <div class="bikes-grid" id="featuredGrid"></div>
+  </div>
+
+  <!-- FOUNDER TEASER -->
+  <div class="container pb-12">
+    <div class="glass card p-6 row items-center gap-6 flex-wrap" style="border-radius: 24px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;right:0;width:200px;height:200px;background:radial-gradient(circle,rgba(255,87,34,0.2),transparent);border-radius:50%;pointer-events:none;"></div>
+      <img src="https://yourimageshare.com/ib/vlALKo6Ab9.jpg" alt="Ranjeet Kumar — Founder" style="width:120px;height:120px;border-radius:20px;object-fit:cover;border:3px solid rgba(255,87,34,0.5);box-shadow:0 12px 30px -8px rgba(255,87,34,0.4);flex-shrink:0;">
+      <div class="flex-grow" style="min-width:200px;">
+        <div class="founder-badge">Meet the Founder</div>
+        <h3 class="text-xl font-black">Ranjeet Kumar</h3>
+        <p class="text-brand font-bold text-sm mt-1">"Drive Your Passion"</p>
+        <p class="text-sm text-slate-400 mt-2">5+ years building India's cleanest bike rental experience across Uttar Pradesh.</p>
+      </div>
+      <div class="col gap-2" style="flex-shrink:0;">
+        <a href="tel:+917234999557" class="contact-badge">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          95557-85729
+        </a>
+        <a href="#about" class="btn btn-primary btn-sm">Read Story →</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="background: rgba(10,15,29,0.6); border-top: 1px solid var(--mid-700); border-bottom: 1px solid var(--mid-700);">
+    <div class="container py-16">
+      <div class="text-center mb-10">
+        <div class="text-brand text-xs font-bold uppercase tracking-wider">Trust & Safety</div>
+        <h2 class="text-3xl font-black mt-1">Why Rent With RanjeetBikers?</h2>
+      </div>
+      <div class="bikes-grid" style="grid-template-columns: 1fr;">
+        <div class="glass card p-6">
+          <div style="width:48px;height:48px;border-radius:12px;background:rgba(255,87,34,0.2);color:var(--brand);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+            <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Complimentary Helmets</h3>
+          <p class="text-sm text-slate-400">Every booking comes with 2 ISI-certified helmets.</p>
+        </div>
+        <div class="glass card p-6">
+          <div style="width:48px;height:48px;border-radius:12px;background:rgba(255,87,34,0.2);color:var(--brand);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+            <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">24/7 Roadside Support</h3>
+          <p class="text-sm text-slate-400">Quick response standby across all cities.</p>
+        </div>
+        <div class="glass card p-6">
+          <div style="width:48px;height:48px;border-radius:12px;background:rgba(255,87,34,0.2);color:var(--brand);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+            <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Zero Hidden Cost</h3>
+          <p class="text-sm text-slate-400">Transparent pricing, instant deposit refund.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-16 text-center">
+    <h2 class="text-3xl font-black mb-3">Ready to Ride?</h2>
+    <p class="text-slate-400 mb-6">Pick your dates, choose your machine, hit the road.</p>
+    <a href="#fleet" class="btn btn-primary btn-lg">Explore All Bikes →</a>
+  </div>
+</section>
+
+<!-- FLEET -->
+<section id="view-fleet" class="view">
+  <div class="container py-8">
+    <div class="glass card p-5 row justify-between items-center gap-4 mb-6" style="flex-wrap: wrap;">
+      <div>
+        <div class="row items-center gap-2">
+          <h1 class="text-2xl font-black">Bikes Fleet</h1>
+          <span class="tag tag-brand" id="fleetCount">0 Bikes</span>
+        </div>
+        <p class="text-sm text-slate-400 mt-1">Showing bikes in <span id="fleetCity" class="text-white font-medium">Varanasi</span>.</p>
+      </div>
+      <div class="row items-center gap-2">
+        <button onclick="resetFilters()" class="text-xs text-slate-400" style="text-decoration: underline;">Reset</button>
+        <div class="layout-toggle">
+          <button id="btnGrid" class="layout-btn active" onclick="setLayout('grid')">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </button>
+          <button id="btnList" class="layout-btn" onclick="setLayout('list')">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="fleet-layout">
+      <aside class="glass filters sticky">
+        <div class="filter-title">
+          <span>Filters</span>
+          <span class="text-brand text-xs" style="cursor:pointer;font-weight:700;" onclick="resetFilters()">Clear</span>
+        </div>
+        <div class="filter-group">
+          <label class="label">Search</label>
+          <input type="text" id="filterKeyword" class="input" placeholder="Enfield, R15, Activa..." oninput="applyFilters()">
+        </div>
+        <div class="filter-group">
+          <label class="label">Category</label>
+          <div id="catFilters"></div>
+        </div>
+        <div class="filter-group">
+          <div class="row justify-between mb-2">
+            <label class="label" style="margin:0;">Max Price</label>
+            <span id="priceLabel" class="text-brand text-xs font-bold">₹4,000/day</span>
+          </div>
+          <input type="range" id="priceRange" min="399" max="4000" step="100" value="4000" oninput="applyFilters()">
+        </div>
+        <div class="filter-group">
+          <label class="label">Sort</label>
+          <select id="sortBy" class="select" onchange="applyFilters()">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: Low → High</option>
+            <option value="price-high">Price: High → Low</option>
+            <option value="rating">Highest Rated</option>
+            <option value="name">Name A-Z</option>
+          </select>
+        </div>
+      </aside>
+      <div>
+        <div id="noBikes" class="hidden empty-state glass">
+          <div class="empty-icon">
+            <svg class="icon icon-xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h4l1 8h-5zM5 6h4l-1 8H3z"/></svg>
+          </div>
+          <h4>No Matching Rides</h4>
+          <p>Try clearing filters or a different keyword.</p>
+          <button class="btn btn-primary btn-sm" onclick="resetFilters()">Show All</button>
+        </div>
+        <div id="fleetGrid" class="bikes-grid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIKE DETAIL -->
+<section id="view-bike" class="view">
+  <div class="container py-8"><div id="bikeDetailContainer"></div></div>
+</section>
+
+<!-- CHECKOUT -->
+<section id="view-checkout" class="view">
+  <div class="container py-8"><div id="checkoutContainer"></div></div>
+</section>
+
+<!-- VOUCHER -->
+<section id="view-voucher" class="view">
+  <div class="container py-8"><div id="voucherContainer"></div></div>
+</section>
+
+<!-- BOOKINGS -->
+<section id="view-bookings" class="view">
+  <div class="container py-10">
+    <div class="glass card p-6 row justify-between items-center gap-4 mb-6" style="flex-wrap: wrap;">
+      <div>
+        <div class="text-brand text-xs font-black uppercase tracking-wider">User Portal</div>
+        <h1 class="text-2xl font-black mt-1">My Bookings</h1>
+        <p class="text-sm text-slate-400">Local bookings saved in your browser.</p>
+      </div>
+      <button onclick="clearAllBookings()" class="btn btn-danger btn-sm">Clear All</button>
+    </div>
+    <div id="bookingsList" class="col gap-4"></div>
+  </div>
+</section>
+
+<!-- WISHLIST -->
+<section id="view-wishlist" class="view">
+  <div class="container py-10">
+    <div class="glass card p-6 row justify-between items-center mb-6">
+      <div>
+        <div class="text-brand text-xs font-black uppercase tracking-wider">Your Garage</div>
+        <h1 class="text-2xl font-black mt-1">Saved Rides</h1>
+      </div>
+      <button onclick="clearAllWishlist()" class="text-xs text-slate-400" style="text-decoration: underline;">Remove All</button>
+    </div>
+    <div id="wishlistGrid" class="bikes-grid"></div>
+  </div>
+</section>
+
+<!-- ABOUT — FOUNDER -->
+<section id="view-about" class="view">
+  <div class="container py-12">
+    <div class="about-grid">
+      <!-- 4 PHOTOS: nayi images -->
+      <div class="founder-photos">
+        <img src="https://yourimageshare.com/ib/vlALKo6Ab9.jpg" alt="Ranjeet Kumar — Founder of RanjeetBikers" class="main-photo" loading="lazy">
+        <img src="https://yourimageshare.com/ib/IgxFk3Lf7h.jpg" alt="Ranjeet Kumar" class="side-photo" loading="lazy">
+        <img src="https://yourimageshare.com/ib/3L7bzq4Quk.jpg" alt="Ranjeet with bike" class="side-photo" loading="lazy">
+        <img src="https://yourimageshare.com/ib/MBwJt2GuV1.jpg" alt="Ranjeet lifestyle" class="wide-photo" loading="lazy">
+      </div>
+
+      <div class="col gap-4">
+        <div class="founder-badge">Founder & Owner</div>
+        <h1 class="text-4xl font-black">Ranjeet Kumar</h1>
+        <p class="text-brand font-bold text-lg">"Drive Your Passion"</p>
+        <p class="text-slate-300 leading-relaxed">
+          Starting with just 2 Royal Enfields in Varanasi, Ranjeet bhai ne RanjeetBikers ko Uttar Pradesh ka sabse trusted bike rental platform banaya. 5+ saal me 40+ bikes, 4 cities, aur 2400+ happy riders — sab ek simple soch se: <strong style="color:#fff;">"Zero hidden charges, sirf passionate riding."</strong>
+        </p>
+
+        <!-- Contact callout -->
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
+          <a href="tel:+917234999557" class="contact-badge">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call: 95557-85729
+          </a>
+          <a href="https://wa.me/917234999557?text=Hi%20RanjeetBikers%2C%20I%20want%20to%20book%20a%20bike" target="_blank" rel="noopener" class="contact-badge" style="background:rgba(37,211,102,0.15);border-color:rgba(37,211,102,0.4);color:#25D366;">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+
+        <div style="display:grid;grid-template-columns: repeat(4, 1fr);gap:12px;">
+          <div class="stat-mini"><div class="n">5+</div><div class="l">Years</div></div>
+          <div class="stat-mini"><div class="n">40+</div><div class="l">Bikes</div></div>
+          <div class="stat-mini"><div class="n">2400+</div><div class="l">Riders</div></div>
+          <div class="stat-mini"><div class="n">4</div><div class="l">Cities</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16" style="max-width:720px;margin-left:auto;margin-right:auto;">
+      <h2 class="text-3xl font-black text-center mb-8">Our Journey</h2>
+      <div class="timeline-item glass"><div class="timeline-year">2019</div><div class="timeline-title">Started with 2 Royal Enfields</div><div class="timeline-desc">Varanasi ke Assi Ghat se safar shuru.</div></div>
+      <div class="timeline-item glass"><div class="timeline-year">2021</div><div class="timeline-title">Expanded to Lucknow</div><div class="timeline-desc">Hazratganj me dusra hub khula.</div></div>
+      <div class="timeline-item glass"><div class="timeline-year">2023</div><div class="timeline-title">40 Bikes Fleet</div><div class="timeline-desc">Superbikes, cruisers, scooters — sab ek chhat ke neeche.</div></div>
+      <div class="timeline-item glass"><div class="timeline-year">2026</div><div class="timeline-title">4 Cities, 2400+ Riders</div><div class="timeline-desc">Delhi-NCR aur Prayagraj bhi join ho gaye.</div></div>
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="#fleet" class="btn btn-primary btn-lg">Book Your First Ride →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="view-contact" class="view">
+  <div class="container py-12">
+    <div class="text-center mb-10">
+      <div class="text-brand text-xs font-bold uppercase tracking-wider">Reach Us</div>
+      <h1 class="text-3xl font-black mt-1">Contact & Hubs</h1>
+      <p class="text-sm text-slate-400 mt-1">We're here 24/7 — call, WhatsApp, or visit a hub.</p>
+    </div>
+
+    <!-- Owner Contact Hero -->
+    <div class="glass card p-6 mb-8" style="max-width:760px;margin-left:auto;margin-right:auto;text-align:center;">
+      <img src="https://yourimageshare.com/ib/vlALKo6Ab9.jpg" alt="Ranjeet" style="width:100px;height:100px;border-radius:50%;object-fit:cover;margin:0 auto 16px;border:3px solid var(--brand);">
+      <div class="founder-badge">Talk to the Owner</div>
+      <h2 class="text-2xl font-black mb-1">Ranjeet Kumar</h2>
+      <p class="text-sm text-slate-400 mb-4">"Drive Your Passion" — call anytime for bookings, custom plans, or fleet inquiries.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="tel:+917234999557" class="contact-badge">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call: 95557-85729
+        </a>
+        <a href="https://wa.me/917234999557?text=Hi%20RanjeetBikers%2C%20I%20want%20to%20book%20a%20bike" target="_blank" rel="noopener" class="contact-badge" style="background:rgba(37,211,102,0.15);border-color:rgba(37,211,102,0.4);color:#25D366;">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="bikes-grid" id="hubsGrid" style="margin-bottom: 40px;"></div>
+    <div class="glass card p-6" style="max-width:640px;margin:0 auto;">
+      <h2 class="text-2xl font-black mb-4">Send a Message</h2>
+      <form onsubmit="event.preventDefault(); showToast('Message sent! We will call you soon.', 'success'); this.reset();" class="col gap-3">
+        <input type="text" required placeholder="Your name" class="input">
+        <input type="tel" required placeholder="Phone number" class="input">
+        <textarea required rows="3" placeholder="Message" class="input"></textarea>
+        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="view-faq" class="view">
+  <div class="container py-12" style="max-width:800px;">
+    <div class="text-center mb-8">
+      <div class="text-brand text-xs font-bold uppercase tracking-wider">Got Questions?</div>
+      <h1 class="text-3xl font-black mt-1">FAQs & Rental Rules</h1>
+    </div>
+    <div id="faqList"></div>
+  </div>
+</section>
+
+<!-- 404 -->
+<section id="view-404" class="view">
+  <div class="container py-16 text-center" style="max-width:520px;">
+    <div class="empty-icon" style="width:80px;height:80px;">
+      <svg class="icon icon-2xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h4l1 8h-5zM5 6h4l-1 8H3z"/></svg>
+    </div>
+    <h1 class="text-4xl font-black mb-2">Lost the Road?</h1>
+    <p class="text-slate-400 mb-6">This page doesn't exist. Let's get you back on track.</p>
+    <a href="#home" class="btn btn-primary">Back to Home</a>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="row items-center gap-2 mb-3">
+        <div class="logo-box" style="width:32px;height:32px;font-size:16px;">R</div>
+        <span class="logo-text">Ranjeet<span style="color: var(--brand)">Bikers</span></span>
+      </div>
+      <p class="text-slate-400 text-xs leading-relaxed mb-3">UP's leading motorcycle rental portal. Sanitized rides with genuine daily, weekly, monthly rates.</p>
+      <a href="tel:+917234999557" class="text-brand text-sm font-bold" style="display:inline-flex;align-items:center;gap:6px;">
+        <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        95557-85729
+      </a>
+    </div>
+    <div>
+      <h4>Rental Hubs</h4>
+      <ul id="footerHubs"></ul>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a onclick="navigate('fleet')">Full Fleet</a></li>
+        <li><a onclick="navigate('about')">About Founder</a></li>
+        <li><a onclick="navigate('contact')">Contact</a></li>
+        <li><a onclick="navigate('faq')">FAQs</a></li>
+      </ul>
+    </div>
+    <div class="glass card p-4">
+      <h4 style="color: var(--brand);">real Notice</h4>
+      <p class="text-slate-400" style="font-size: 11px; line-height: 1.6;">Frontend prototype. All bookings simulated in LocalStorage. Production needs a backend server.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 RanjeetBikers India Pvt. Ltd. All Rights Reserved.</div>
+</footer>
+
+<div id="toastContainer"></div>
+
+<script>
+const HERO_IMAGES = [
+  "https://yourimageshare.com/ib/aMJvcJeh7U.jpg",
+  "https://yourimageshare.com/ib/oET9eaf0is.jpg",
+  "https://yourimageshare.com/ib/No4P3amoAi.jpg",
+  "https://yourimageshare.com/ib/FKvceqlIcf.jpg",
+  "https://yourimageshare.com/ib/t6iddetA4h.jpg"
+];
+
+const OWNER_PHONE = "7234999557";
+const OWNER_PHONE_TEL = "+917234999557";
+
+const HUBS = [
+  { city: "Varanasi", address: "Assi Ghat & Cantt", phone: OWNER_PHONE_TEL },
+  { city: "Lucknow", address: "Hazratganj & Airport", phone: OWNER_PHONE_TEL },
+  { city: "Prayagraj", address: "Civil Lines", phone: OWNER_PHONE_TEL },
+  { city: "Delhi-NCR", address: "Connaught Place", phone: OWNER_PHONE_TEL }
+];
+
+const BIKES = [
+{id:"RJB-001",name:"Royal Enfield Classic 350",category:"Cruiser",daily:899,weekly:5499,monthly:17999,deposit:2000,cc:"349 cc",mileage:"36 km/l",gear:"5-Speed",rating:4.9,reviews:380,img:"https://yourimageshare.com/ib/vYlr1lFhPh.jpg",desc:"The timeless road thumper with dual channel ABS, comfortable touring seat, vintage exhaust sound."},
+{id:"RJB-002",name:"Yamaha YZF-R15 V4 Racing Blue",category:"Sports",daily:949,weekly:5899,monthly:18999,deposit:2500,cc:"155 cc",mileage:"45 km/l",gear:"6-Speed",rating:4.8,reviews:290,img:"https://yourimageshare.com/ib/XajwM3KWGu.jpg",desc:"Aerodynamic track-bred DNA with assist & slipper clutch, traction control, inverted forks."},
+{id:"RJB-003",name:"KTM RC 390 GP Edition",category:"Sports",daily:1499,weekly:8999,monthly:27999,deposit:3500,cc:"373 cc",mileage:"28 km/l",gear:"6-Speed",rating:4.9,reviews:215,img:"https://yourimageshare.com/ib/g684CYF0QP.jpg",desc:"Pure performance with razor-sharp handling, cornering ABS, TFT dashboard."},
+{id:"RJB-004",name:"Royal Enfield Hunter 350",category:"Cruiser",daily:749,weekly:4699,monthly:15499,deposit:1500,cc:"349 cc",mileage:"37 km/l",gear:"5-Speed",rating:4.7,reviews:180,img:"https://yourimageshare.com/ib/0CoDffzKt4.jpg",desc:"Agile lightweight retro-roadster for city navigation and weekend cafe hops."},
+{id:"RJB-005",name:"Kawasaki Ninja ZX-10R",category:"Superbike",daily:3499,weekly:21999,monthly:64999,deposit:8000,cc:"998 cc",mileage:"15 km/l",gear:"6-Speed",rating:5.0,reviews:94,img:"https://yourimageshare.com/ib/dlOnoQZndn.jpg",desc:"Championship inline-4 superbike with launch control, aerodynamic winglets."},
+{id:"RJB-006",name:"RE Himalayan 450 Sherpa",category:"Tourer",daily:1299,weekly:7999,monthly:24999,deposit:3000,cc:"452 cc",mileage:"30 km/l",gear:"6-Speed",rating:4.9,reviews:310,img:"https://yourimageshare.com/ib/asgPQJvsvJ.jpg",desc:"Built for all roads. Google Maps projection, 21-inch front spoke rim, long travel suspension."},
+{id:"RJB-007",name:"TVS Apache RTR 200 4V",category:"Sports",daily:699,weekly:4299,monthly:14200,deposit:1500,cc:"197 cc",mileage:"38 km/l",gear:"5-Speed",rating:4.8,reviews:220,img:"https://yourimageshare.com/ib/GomsOYroGy.jpg",desc:"Riding modes, Showa adjustable suspension, SmartXonnect telemetry."},
+{id:"RJB-008",name:"Bajaj Pulsar NS200 ABS",category:"Sports",daily:649,weekly:3999,monthly:13500,deposit:1500,cc:"199.5 cc",mileage:"37 km/l",gear:"6-Speed",rating:4.7,reviews:340,img:"https://yourimageshare.com/ib/bs7P3MpfTx.jpg",desc:"Aggressive streetfighter with perimeter frame, inverted forks."},
+{id:"RJB-009",name:"Honda Activa 6G Premium",category:"Scooter",daily:449,weekly:2799,monthly:8999,deposit:1000,cc:"109 cc",mileage:"50 km/l",gear:"Automatic",rating:4.9,reviews:520,img:"https://yourimageshare.com/ib/B9OwQpNcDJ.jpg",desc:"India's family favourite. Silent ACG starter, reliable engine, ample storage."},
+{id:"RJB-010",name:"Suzuki Hayabusa GSX-1300R",category:"Superbike",daily:3999,weekly:24999,monthly:74999,deposit:10000,cc:"1340 cc",mileage:"14 km/l",gear:"6-Speed",rating:5.0,reviews:140,img:"https://yourimageshare.com/ib/Cq2LVfnS4m.jpg",desc:"The legendary hyperbike. Unmatched highway stability, Brembo Stylema calipers."},
+{id:"RJB-011",name:"Jawa 42 Bobber Moonstone",category:"Cruiser",daily:1099,weekly:6799,monthly:21999,deposit:2500,cc:"334 cc",mileage:"32 km/l",gear:"6-Speed",rating:4.8,reviews:165,img:"https://yourimageshare.com/ib/bQ7lBzx9kt.jpg",desc:"Custom single-seat factory bobber with slash-cut twin exhausts."},
+{id:"RJB-012",name:"TVS Ntorq 125 Race XP",category:"Scooter",daily:499,weekly:3099,monthly:9899,deposit:1000,cc:"124.8 cc",mileage:"45 km/l",gear:"Automatic",rating:4.9,reviews:390,img:"https://yourimageshare.com/ib/jbtTBOpfhM.jpg",desc:"Sportiest scooter with dual ride modes, voice assist, Bluetooth nav."},
+{id:"RJB-013",name:"BMW G 310 GS Adventure",category:"Tourer",daily:1599,weekly:9899,monthly:29999,deposit:4000,cc:"313 cc",mileage:"30 km/l",gear:"6-Speed",rating:4.9,reviews:175,img:"https://yourimageshare.com/ib/EJRvZPJNRq.jpg",desc:"German dual-sport tourer for highway cruising and gravel exploration."},
+{id:"RJB-014",name:"RE Meteor 350 Supernova",category:"Cruiser",daily:949,weekly:5999,monthly:18999,deposit:2000,cc:"349 cc",mileage:"36 km/l",gear:"5-Speed",rating:4.8,reviews:285,img:"https://yourimageshare.com/ib/6SPp69Se9c.jpg",desc:"Pure highway cruiser with plush seats, windshield, Tripper nav."},
+{id:"RJB-015",name:"KTM Duke 250 Dark Galvano",category:"Sports",daily:899,weekly:5599,monthly:17999,deposit:2000,cc:"248.8 cc",mileage:"32 km/l",gear:"6-Speed",rating:4.8,reviews:210,img:"https://yourimageshare.com/ib/87WvzIuCJJ.jpg",desc:"Sharp street naked with trellis frame, WP Apex shocks."},
+{id:"RJB-016",name:"Suzuki Burgman Street 125",category:"Scooter",daily:519,weekly:3199,monthly:10499,deposit:1000,cc:"124 cc",mileage:"48 km/l",gear:"Automatic",rating:4.7,reviews:230,img:"https://yourimageshare.com/ib/d8vy285gKK.jpg",desc:"Maxi-scooter styling with stretched footboard, USB charger."},
+{id:"RJB-017",name:"RE Bullet 350 Military",category:"Cruiser",daily:799,weekly:4999,monthly:16499,deposit:2000,cc:"349 cc",mileage:"37 km/l",gear:"5-Speed",rating:4.9,reviews:420,img:"https://yourimageshare.com/ib/ZBFGcpzzXP.jpg",desc:"The heritage icon with pin-striped tank, commanding posture."},
+{id:"RJB-018",name:"Yamaha MT-15 V2 Monster",category:"Sports",daily:849,weekly:5299,monthly:16999,deposit:2000,cc:"155 cc",mileage:"47 km/l",gear:"6-Speed",rating:4.9,reviews:310,img:"https://yourimageshare.com/ib/8OGElT2Z6z.jpg",desc:"Dark warrior of street riding. Superb acceleration, LED projector."},
+{id:"RJB-019",name:"KTM 390 Adventure",category:"Tourer",daily:1499,weekly:9199,monthly:28499,deposit:3500,cc:"373 cc",mileage:"28 km/l",gear:"6-Speed",rating:4.9,reviews:195,img:"https://yourimageshare.com/ib/Sb69NlUwHY.jpg",desc:"Adventure touring weapon with offroad ABS, traction control."},
+{id:"RJB-020",name:"Honda CB350 H'ness",category:"Cruiser",daily:899,weekly:5599,monthly:17999,deposit:2000,cc:"348 cc",mileage:"38 km/l",gear:"5-Speed",rating:4.8,reviews:260,img:"https://yourimageshare.com/ib/ZaxN9ujpQN.jpg",desc:"Ultra-smooth counterbalanced engine, deep exhaust note, voice control."},
+{id:"RJB-021",name:"Hero XPulse 200 4V Rally",category:"Tourer",daily:749,weekly:4699,monthly:14999,deposit:1500,cc:"199.6 cc",mileage:"38 km/l",gear:"5-Speed",rating:4.8,reviews:230,img:"https://yourimageshare.com/ib/OK2MWICsh3.jpg",desc:"High ground clearance, adjustable rally suspensions, bench seat."},
+{id:"RJB-022",name:"Yamaha Aerox 155",category:"Scooter",daily:699,weekly:4299,monthly:13999,deposit:1500,cc:"155 cc",mileage:"42 km/l",gear:"Automatic",rating:4.9,reviews:280,img:"https://yourimageshare.com/ib/ege87lg7Bg.jpg",desc:"Maxi performance scooter with R15 engine, wide rear tyre."},
+{id:"RJB-023",name:"Ducati Panigale V2",category:"Superbike",daily:3899,weekly:24200,monthly:72000,deposit:10000,cc:"955 cc",mileage:"13 km/l",gear:"6-Speed",rating:5.0,reviews:88,img:"https://yourimageshare.com/ib/5iupI8GjVo.jpg",desc:"Italian artwork. 155 HP, single-sided swingarm, Bosch IMU electronics."},
+{id:"RJB-024",name:"TVS Ronin 225",category:"Cruiser",daily:699,weekly:4399,monthly:13999,deposit:1500,cc:"225 cc",mileage:"40 km/l",gear:"5-Speed",rating:4.7,reviews:145,img:"https://yourimageshare.com/ib/2cw2rKZsNF.jpg",desc:"Unscripted retro scrambler with golden USD forks."},
+{id:"RJB-025",name:"Bajaj Dominar 400",category:"Tourer",daily:1099,weekly:6899,monthly:21999,deposit:2500,cc:"373.3 cc",mileage:"29 km/l",gear:"6-Speed",rating:4.8,reviews:310,img:"https://yourimageshare.com/ib/sytNWOEeoG.jpg",desc:"Factory touring ready with tall visor, hand guards, bash plate."},
+{id:"RJB-026",name:"Honda Dio 125",category:"Scooter",daily:429,weekly:2699,monthly:8599,deposit:1000,cc:"124 cc",mileage:"49 km/l",gear:"Automatic",rating:4.6,reviews:190,img:"https://yourimageshare.com/ib/FPisvaH44P.jpg",desc:"Aggressive youth moto-scooter with sporty graphics."},
+{id:"RJB-027",name:"RE Continental GT 650",category:"Cruiser",daily:1599,weekly:9899,monthly:31999,deposit:4000,cc:"648 cc",mileage:"25 km/l",gear:"6-Speed",rating:5.0,reviews:340,img:"https://yourimageshare.com/ib/yW9iNjzsBF.jpg",desc:"Pure cafe racer with clip-ons, rear-set footpegs, twin exhaust."},
+{id:"RJB-028",name:"Harley-Davidson X440",category:"Cruiser",daily:1399,weekly:8699,monthly:26999,deposit:3500,cc:"440 cc",mileage:"34 km/l",gear:"6-Speed",rating:4.9,reviews:220,img:"https://yourimageshare.com/ib/W7TZezjSYV.jpg",desc:"Harley's roadster engineered for Indian streets."},
+{id:"RJB-029",name:"Kawasaki Z900",category:"Superbike",daily:3299,weekly:20499,monthly:61999,deposit:8000,cc:"948 cc",mileage:"16 km/l",gear:"6-Speed",rating:4.9,reviews:110,img:"https://yourimageshare.com/ib/q580XXP7nO.jpg",desc:"Sugomi styled street monster producing 125 PS."},
+{id:"RJB-030",name:"Hero Splendor Plus XTEC",category:"Commuter",daily:399,weekly:2499,monthly:7499,deposit:1000,cc:"97.2 cc",mileage:"65 km/l",gear:"4-Speed",rating:4.8,reviews:610,img:"https://yourimageshare.com/ib/baBYxFNdsE.jpg",desc:"The fuel economy king. Robust, digital console, phone charging."},
+{id:"RJB-031",name:"Yamaha FZ-S FI V4",category:"Commuter",daily:599,weekly:3699,monthly:11999,deposit:1500,cc:"149 cc",mileage:"48 km/l",gear:"5-Speed",rating:4.7,reviews:310,img:"https://yourimageshare.com/ib/BiA1WXwssu.jpg",desc:"Muscular commuter with traction control, comfortable pillion seat."},
+{id:"RJB-032",name:"BMW S 1000 RR",category:"Superbike",daily:3999,weekly:24999,monthly:74999,deposit:10000,cc:"999 cc",mileage:"14 km/l",gear:"6-Speed",rating:5.0,reviews:95,img:"https://yourimageshare.com/ib/QjpBwnAhnT.jpg",desc:"Pinnacle of supersport. 205 HP, carbon wheels, launch control."},
+{id:"RJB-033",name:"RE Interceptor 650",category:"Cruiser",daily:1499,weekly:9299,monthly:29999,deposit:3500,cc:"648 cc",mileage:"25 km/l",gear:"6-Speed",rating:4.9,reviews:290,img:"https://yourimageshare.com/ib/Qx4E7pUhYE.jpg",desc:"Easy-riding British twin roadster with smooth cruising."},
+{id:"RJB-034",name:"TVS Raider 125",category:"Commuter",daily:499,weekly:3100,monthly:9999,deposit:1000,cc:"124.8 cc",mileage:"57 km/l",gear:"5-Speed",rating:4.8,reviews:275,img:"https://yourimageshare.com/ib/mXxl9nE9Ou.jpg",desc:"Sporty Gen-Z commuter with LCD console, mono-shock."},
+{id:"RJB-035",name:"Aprilia SR 160",category:"Scooter",daily:599,weekly:3699,monthly:11999,deposit:1500,cc:"160 cc",mileage:"36 km/l",gear:"Automatic",rating:4.7,reviews:180,img:"https://yourimageshare.com/ib/mCNDCaZeOO.jpg",desc:"Italian crossover racer scooter with 14-inch alloys."},
+{id:"RJB-036",name:"Honda Hornet 2.0 Repsol",category:"Sports",daily:679,weekly:4199,monthly:13499,deposit:1500,cc:"184 cc",mileage:"42 km/l",gear:"5-Speed",rating:4.7,reviews:160,img:"https://yourimageshare.com/ib/78NxN7ane7.jpg",desc:"MotoGP livery, golden USD forks, broad 140mm rear tyre."},
+{id:"RJB-037",name:"Suzuki V-Strom SX 250",category:"Tourer",daily:999,weekly:6199,monthly:19999,deposit:2500,cc:"249 cc",mileage:"36 km/l",gear:"6-Speed",rating:4.8,reviews:195,img:"https://yourimageshare.com/ib/RlAiR0AoU4.jpg",desc:"Versatile sports-adventure tourer with beak, knuckle covers."},
+{id:"RJB-038",name:"Yamaha RayZR 125 Hybrid",category:"Scooter",daily:449,weekly:2799,monthly:8899,deposit:1000,cc:"125 cc",mileage:"58 km/l",gear:"Automatic",rating:4.8,reviews:225,img:"https://yourimageshare.com/ib/tRVjOmHf9n.jpg",desc:"Featherlight 99 kg kerb weight with electric assist."},
+{id:"RJB-039",name:"RE Scram 411",category:"Tourer",daily:1099,weekly:6799,monthly:21999,deposit:2500,cc:"411 cc",mileage:"32 km/l",gear:"5-Speed",rating:4.8,reviews:240,img:"https://yourimageshare.com/ib/JDYAAt0d1c.jpg",desc:"Scrambler spirit with rugged suspension, 19-inch front wheel."}
+];
+
+const FAQS = [
+  { q: "What documents are required to rent a motorcycle?", a: "Valid Driving Licence (DL) + one government photo ID (Aadhaar, Passport, Voter ID). International tourists must show a valid IDP." },
+  { q: "Is fuel included in the rental price?", a: "Fuel is not included. We supply the bike with sufficient fuel to reach the nearest station. Return at the same level." },
+  { q: "How does the security deposit work?", a: "Refundable deposit (₹1,000 for scooters up to ₹5,000 for superbikes) is pre-authorized at pickup. Refunded instantly after check-in." },
+  { q: "What happens on breakdown or puncture?", a: "24/7 Roadside Assistance. On-spot repair or machine replacement within our city radius." },
+  { q: "Can I take the bike outside the city?", a: "Yes, with prior intimation. We update insurance and support coverage accordingly." },
+  { q: "What is the cancellation policy?", a: "Free up to 6 hours before pickup. Within 6 hours, 50% of daily fare is retained. No-shows are charged full first-day fare." }
+];
+
+const CATEGORIES = [
+  { name: "Superbike", sub: "Hayabusa, Ninja", icon: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>' },
+  { name: "Cruiser", sub: "RE, Jawa", icon: '<circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>' },
+  { name: "Sports", sub: "R15, Duke", icon: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>' },
+  { name: "Tourer", sub: "Himalayan, ADV", icon: '<path d="M8 3l4 8 5-5 5 15H2L8 3z"/>' },
+  { name: "Commuter", sub: "Pulsar, Splendor", icon: '<circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h4l1 8h-5zM5 6h4l-1 8H3z"/>' },
+  { name: "Scooter", sub: "Activa, Ntorq", icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>' }
+];
+
+const State = {
+  view: 'home', layout: 'grid',
+  search: { city: 'Varanasi', pickup: '', return: '' },
+  activeBike: null,
+  checkout: { step: 1, pickup: '', return: '', customer: {} }
+};
+
+const Storage = {
+  get(k) { try { return JSON.parse(localStorage.getItem(k)) || []; } catch { return []; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+  getBookings() { return this.get('rjb_bookings'); },
+  saveBooking(b) { const l = this.getBookings(); l.unshift(b); this.set('rjb_bookings', l); },
+  deleteBooking(id) { this.set('rjb_bookings', this.getBookings().filter(b => b.id !== id)); },
+  clearBookings() { localStorage.removeItem('rjb_bookings'); },
+  getWishlist() { return this.get('rjb_wishlist'); },
+  toggleWishlist(id) {
+    const l = this.getWishlist();
+    const idx = l.indexOf(id);
+    if (idx > -1) l.splice(idx, 1); else l.push(id);
+    this.set('rjb_wishlist', l);
+    return idx === -1;
+  },
+  isWishlisted(id) { return this.getWishlist().includes(id); },
+  clearWishlist() { localStorage.removeItem('rjb_wishlist'); }
+};
+
+const ROUTES = {
+  home: { el: 'view-home', title: 'RanjeetBikers — Premium Bike Rental' },
+  fleet: { el: 'view-fleet', title: 'Browse Fleet | RanjeetBikers' },
+  bike: { el: 'view-bike', title: 'Bike Details | RanjeetBikers' },
+  checkout: { el: 'view-checkout', title: 'Checkout | RanjeetBikers' },
+  voucher: { el: 'view-voucher', title: 'Voucher | RanjeetBikers' },
+  bookings: { el: 'view-bookings', title: 'My Bookings | RanjeetBikers' },
+  wishlist: { el: 'view-wishlist', title: 'Wishlist | RanjeetBikers' },
+  about: { el: 'view-about', title: 'About | RanjeetBikers' },
+  contact: { el: 'view-contact', title: 'Contact | RanjeetBikers' },
+  faq: { el: 'view-faq', title: 'FAQs | RanjeetBikers' },
+  '404': { el: 'view-404', title: 'Not Found | RanjeetBikers' }
+};
+
+function parseHash() {
+  const hash = (location.hash.replace('#', '') || 'home');
+  const [pathPart, queryPart] = hash.split('?');
+  const [view, param] = pathPart.split('/');
+  return { view, param, params: new URLSearchParams(queryPart || '') };
+}
+
+function navigate(view, param = '', query = {}) {
+  let hash = '#' + view;
+  if (param) hash += '/' + param;
+  const qs = new URLSearchParams(query).toString();
+  if (qs) hash += '?' + qs;
+  if (location.hash === hash) router();
+  else location.hash = hash;
+}
+
+function router() {
+  const { view, param, params } = parseHash();
+  const route = ROUTES[view] || ROUTES['404'];
+  State.view = ROUTES[view] ? view : '404';
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  const target = document.getElementById(route.el);
+  if (target) target.classList.add('active');
+  document.title = route.title;
+  renderNav();
+  try {
+    if (view === 'home') renderHome();
+    else if (view === 'fleet') {
+      const cat = params.get('cat') || 'All';
+      const city = params.get('city');
+      if (city) State.search.city = city;
+      applyFilters(cat);
+    }
+    else if (view === 'bike') renderBikeDetail(param);
+    else if (view === 'checkout') renderCheckout(param);
+    else if (view === 'voucher') renderVoucher(param);
+    else if (view === 'bookings') renderBookings();
+    else if (view === 'wishlist') renderWishlist();
+    else if (view === 'contact') renderHubs();
+    else if (view === 'faq') renderFaqs();
+  } catch (e) { console.error('Render error:', e); }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderNav() {
+  const wishCount = Storage.getWishlist().length;
+  const bookCount = Storage.getBookings().length;
+  const active = State.view;
+  const tabs = [
+    ['home', 'Home', 0], ['fleet', 'Find Bikes', 0],
+    ['wishlist', 'Wishlist', wishCount], ['bookings', 'Bookings', bookCount],
+    ['about', 'About', 0], ['faq', 'FAQs', 0]
+  ];
+  document.getElementById('navTabs').innerHTML = tabs.map(([v, l, b]) =>
+    `<button class="nav-tab ${active === v ? 'active' : ''}" onclick="navigate('${v}')">${l}${b > 0 ? `<span class="nav-badge">${b}</span>` : ''}</button>`
+  ).join('');
+  document.getElementById('mobileMenuInner').innerHTML = [
+    ['home', '🏠 Home'], ['fleet', '🏍️ Browse Fleet'],
+    ['wishlist', `❤️ Wishlist (${wishCount})`], ['bookings', `📋 My Bookings (${bookCount})`],
+    ['about', '👤 About Founder'], ['contact', '📞 Contact'], ['faq', '❓ FAQs']
+  ].map(([v, l]) => `<button class="mobile-link" onclick="navigate('${v}');toggleMobile(true)">${l}</button>`).join('');
+  document.getElementById('footerHubs').innerHTML = HUBS.map(h =>
+    `<li><a onclick="navigate('fleet','',{city:'${h.city}'})">${h.city} — ${h.address}</a></li>`
+  ).join('');
+}
+
+function toggleMobile(force) {
+  const m = document.getElementById('mobileMenu');
+  if (force) m.classList.remove('open');
+  else m.classList.toggle('open');
+}
+
+const ICONS = {
+  heart: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  check: '<svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+  checkCircle: '<svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+  printer: '<svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>',
+  calendar: '<svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+  calendarX: '<svg class="icon icon-xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="10" y1="14" x2="14" y2="18"/><line x1="14" y1="14" x2="10" y2="18"/></svg>',
+  mapPin: '<svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+  phone: '<svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+  chevronDown: '<svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>'
+};
+
+let _heroTimer = null, _heroIdx = 0;
+function renderHome() {
+  const p = document.getElementById('searchPickup');
+  const r = document.getElementById('searchReturn');
+  if (p && !p.value) {
+    const now = new Date();
+    p.value = toLocalInput(new Date(now.getTime() + 2 * 3600000));
+    r.value = toLocalInput(new Date(now.getTime() + 26 * 3600000));
+    p.min = toLocalInput(now);
+    p.onchange = () => {
+      r.min = p.value;
+      if (r.value && new Date(r.value) <= new Date(p.value)) {
+        r.value = toLocalInput(new Date(new Date(p.value).getTime() + 3600000));
+      }
+    };
+  }
+  const hero = document.getElementById('heroBg');
+  if (hero && !_heroTimer) {
+    _heroTimer = setInterval(() => {
+      _heroIdx = (_heroIdx + 1) % HERO_IMAGES.length;
+      hero.style.opacity = '0.3';
+      setTimeout(() => {
+        hero.style.backgroundImage = `url('${HERO_IMAGES[_heroIdx]}')`;
+        hero.style.opacity = '1';
+      }, 400);
+    }, 5500);
+  }
+  document.getElementById('homeCats').innerHTML = CATEGORIES.map(c => `
+    <div class="cat-card" onclick="navigate('fleet','',{cat:'${c.name}'})">
+      <div class="cat-icon">
+        <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${c.icon}</svg>
+      </div>
+      <div class="cat-name">${c.name}</div>
+      <div class="cat-sub">${c.sub}</div>
+    </div>
+  `).join('');
+  const featuredIds = ['RJB-001', 'RJB-002', 'RJB-005', 'RJB-006', 'RJB-009', 'RJB-010'];
+  document.getElementById('featuredGrid').innerHTML = featuredIds
+    .map(id => BIKES.find(b => b.id === id)).filter(Boolean)
+    .map(b => bikeCard(b, false)).join('');
+}
+
+function handleHeroSearch(e) {
+  e.preventDefault();
+  const city = document.getElementById('searchCity').value;
+  const pickup = document.getElementById('searchPickup').value;
+  const ret = document.getElementById('searchReturn').value;
+  if (!pickup || !ret) return showToast('Select both dates', 'error');
+  if (new Date(ret) <= new Date(pickup)) return showToast('Return must be after pickup', 'error');
+  State.search = { city, pickup, return: ret };
+  showToast(`Showing bikes in ${city}`, 'info');
+  navigate('fleet', '', { city });
+}
+
+function renderCatFilters(selected) {
+  const cats = ['All', 'Superbike', 'Cruiser', 'Sports', 'Tourer', 'Commuter', 'Scooter'];
+  document.getElementById('catFilters').innerHTML = cats.map(c => {
+    const count = c === 'All' ? BIKES.length : BIKES.filter(b => b.category === c).length;
+    return `<label class="radio-item">
+      <span><input type="radio" name="catFilter" value="${c}" ${selected === c ? 'checked' : ''} onchange="applyFilters()">${c === 'All' ? 'All Types' : c}</span>
+      <span class="count">${count}</span>
+    </label>`;
+  }).join('');
+}
+
+function applyFilters(forceCat) {
+  if (!document.getElementById('catFilters')) return;
+  const selected = forceCat || (document.querySelector('input[name="catFilter"]:checked')?.value || 'All');
+  renderCatFilters(selected);
+  const keyword = (document.getElementById('filterKeyword')?.value || '').toLowerCase();
+  const maxPrice = Number(document.getElementById('priceRange')?.value || 4000);
+  const sortBy = document.getElementById('sortBy')?.value || 'featured';
+  document.getElementById('priceLabel').innerText = `₹${maxPrice.toLocaleString('en-IN')}/day`;
+  document.getElementById('fleetCity').innerText = State.search.city;
+  let filtered = BIKES.filter(b => {
+    const mName = b.name.toLowerCase().includes(keyword) || b.category.toLowerCase().includes(keyword);
+    const mCat = selected === 'All' || b.category === selected;
+    const mPrice = b.daily <= maxPrice;
+    return mName && mCat && mPrice;
+  });
+  if (sortBy === 'price-low') filtered.sort((a, b) => a.daily - b.daily);
+  else if (sortBy === 'price-high') filtered.sort((a, b) => b.daily - a.daily);
+  else if (sortBy === 'rating') filtered.sort((a, b) => b.rating - a.rating);
+  else if (sortBy === 'name') filtered.sort((a, b) => a.name.localeCompare(b.name));
+  document.getElementById('fleetCount').innerText = `${filtered.length} Bikes`;
+  const grid = document.getElementById('fleetGrid');
+  const no = document.getElementById('noBikes');
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    no.classList.remove('hidden');
+  } else {
+    no.classList.add('hidden');
+    grid.className = State.layout === 'list' ? 'bikes-grid bike-list' : 'bikes-grid';
+    grid.innerHTML = filtered.map(b => bikeCard(b, State.layout === 'list')).join('');
+  }
+}
+
+function setLayout(mode) {
+  State.layout = mode;
+  document.getElementById('btnGrid').classList.toggle('active', mode === 'grid');
+  document.getElementById('btnList').classList.toggle('active', mode === 'list');
+  applyFilters();
+}
+
+function resetFilters() {
+  document.getElementById('filterKeyword').value = '';
+  document.getElementById('priceRange').value = 4000;
+  document.getElementById('sortBy').value = 'featured';
+  const all = document.querySelector('input[name="catFilter"][value="All"]');
+  if (all) all.checked = true;
+  applyFilters();
+  showToast('Filters reset', 'info');
+}
+
+function bikeCard(b, isList) {
+  const fav = Storage.isWishlisted(b.id);
+  return `
+    <div class="bike-card">
+      <div class="bike-img-wrap">
+        <img src="${b.img}" alt="${b.name}" loading="lazy" onerror="this.src='https://placehold.co/500x320/131e36/ff5722?text=Bike'">
+        <div class="bike-img-overlay"></div>
+        <div class="bike-badge">${b.category}</div>
+        <button class="heart-btn ${fav ? 'active' : ''}" onclick="event.stopPropagation(); toggleWishlist('${b.id}')" aria-label="Wishlist">${ICONS.heart}</button>
+        <div class="bike-img-meta">
+          <span class="rating">★ ${b.rating}</span>
+          <span>${b.cc}</span>
+        </div>
+      </div>
+      <div class="bike-info">
+        <div class="bike-name" onclick="navigate('bike','${b.id}')">${b.name}</div>
+        <div class="bike-specs"><span>${b.mileage}</span><span>•</span><span>${b.gear}</span></div>
+      </div>
+      <div class="bike-footer">
+        <div><div class="bike-price-lbl">Daily</div><div class="bike-price">₹${b.daily}<small>/day</small></div></div>
+        <div class="row gap-2">
+          <button class="btn btn-secondary btn-sm" onclick="navigate('bike','${b.id}')">Details</button>
+          <button class="btn btn-primary btn-sm" onclick="navigate('checkout','${b.id}')">Rent</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderBikeDetail(id) {
+  const b = BIKES.find(x => x.id === id);
+  const c = document.getElementById('bikeDetailContainer');
+  if (!b) {
+    c.innerHTML = `<div class="text-center py-16"><h2 class="text-2xl font-bold mb-2">Bike not found</h2><a href="#fleet" class="text-brand">Back to Fleet →</a></div>`;
+    return;
+  }
+  State.activeBike = b;
+  const pickup = State.search.pickup || toLocalInput(new Date(Date.now() + 2 * 3600000));
+  const ret = State.search.return || toLocalInput(new Date(Date.now() + 26 * 3600000));
+  const related = BIKES.filter(x => x.category === b.category && x.id !== b.id).slice(0, 3);
+  c.innerHTML = `
+    <div class="breadcrumb">
+      <a href="#home">Home</a> / <a href="#fleet">Fleet</a> /
+      <a href="#fleet?cat=${b.category}">${b.category}</a> /
+      <span style="color:#fff;">${b.name}</span>
+    </div>
+    <div class="detail-layout">
+      <div class="col gap-5">
+        <div class="detail-main-img">
+          <img src="${b.img}" alt="${b.name}" onerror="this.src='https://placehold.co/800x500/131e36/ff5722?text=Bike'">
+          <div class="detail-img-overlay"></div>
+          <div class="detail-img-content">
+            <span class="tag tag-brand" style="display:inline-block;">${b.category}</span>
+            <h1>${b.name}</h1>
+            <div class="row gap-3 mt-1 text-xs">
+              <span style="color:#fbbf24;font-weight:700;">★ ${b.rating}</span>
+              <span class="text-slate-300">${b.reviews} verified riders</span>
+            </div>
+          </div>
+        </div>
+        <div class="specs-grid glass">
+          <div class="spec-item"><span class="spec-lbl">Engine</span><span class="spec-val">${b.cc}</span></div>
+          <div class="spec-item"><span class="spec-lbl">Mileage</span><span class="spec-val">${b.mileage}</span></div>
+          <div class="spec-item"><span class="spec-lbl">Transmission</span><span class="spec-val">${b.gear}</span></div>
+          <div class="spec-item"><span class="spec-lbl">Deposit</span><span class="spec-val" style="color:var(--brand);">₹${b.deposit.toLocaleString('en-IN')}</span></div>
+        </div>
+        <div class="glass card p-5">
+          <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Description</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">${b.desc}</p>
+        </div>
+        <div class="glass card p-5">
+          <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">Rental Rates</h3>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center;">
+            <div style="background:var(--mid-950);padding:12px;border-radius:12px;border:1px solid var(--mid-700);"><div class="text-xs text-slate-400">Daily</div><div class="font-bold">₹${b.daily}</div></div>
+            <div style="background:var(--mid-950);padding:12px;border-radius:12px;border:1px solid var(--mid-700);"><div class="text-xs text-slate-400">Weekly</div><div class="font-bold">₹${b.weekly}</div></div>
+            <div style="background:var(--mid-950);padding:12px;border-radius:12px;border:1px solid var(--mid-700);"><div class="text-xs text-slate-400">Monthly</div><div class="font-bold">₹${b.monthly}</div></div>
+          </div>
+        </div>
+      </div>
+      <aside>
+        <div class="glass booking-widget sticky">
+          <h3 class="font-bold text-lg mb-4">Book This Bike</h3>
+          <div class="mb-3"><label class="label">Pickup Date & Time</label><input type="datetime-local" id="detailPickup" value="${pickup}" onchange="updateDetailPrice()" class="input"></div>
+          <div class="mb-3"><label class="label">Return Date & Time</label><input type="datetime-local" id="detailReturn" value="${ret}" onchange="updateDetailPrice()" class="input"></div>
+          <div id="detailPriceBox" class="price-breakdown" style="background:var(--mid-950);border:1px solid var(--mid-700);"></div>
+          <button onclick="proceedToCheckout('${b.id}')" class="btn btn-primary btn-block mb-2">Proceed to Book</button>
+          <button onclick="toggleWishlist('${b.id}')" class="btn btn-secondary btn-block">${Storage.isWishlisted(b.id) ? '❤️ Saved' : '♡ Save to Wishlist'}</button>
+        </div>
+      </aside>
+    </div>
+    ${related.length ? `<div class="mt-12"><h2 class="text-2xl font-black mb-4">Similar Bikes</h2><div class="bikes-grid">${related.map(x => bikeCard(x, false)).join('')}</div></div>` : ''}
+  `;
+  updateDetailPrice();
+}
+
+function updateDetailPrice() {
+  const b = State.activeBike;
+  if (!b) return;
+  const p = document.getElementById('detailPickup')?.value;
+  const r = document.getElementById('detailReturn')?.value;
+  const box = document.getElementById('detailPriceBox');
+  if (!box) return;
+  if (!p || !r) { box.innerHTML = '<p class="text-slate-400">Pick dates</p>'; return; }
+  const calc = calculatePrice(b, p, r);
+  if (calc.error) { box.innerHTML = `<p class="text-red">${calc.error}</p>`; return; }
+  box.innerHTML = `
+    <div class="price-row"><span>Duration</span><span class="val">${calc.days} Day(s) (${calc.hours} hrs)</span></div>
+    <div class="price-row"><span>Base Fare</span><span class="val">₹${calc.baseFare.toLocaleString('en-IN')}</span></div>
+    <div class="price-row"><span>GST (5%)</span><span class="val">₹${calc.gst.toLocaleString('en-IN')}</span></div>
+    <div class="price-row"><span>Deposit</span><span class="val" style="color:var(--emerald);">₹${calc.deposit.toLocaleString('en-IN')}</span></div>
+    <div class="price-row total"><span>Total</span><span class="val">₹${calc.total.toLocaleString('en-IN')}</span></div>
+  `;
+}
+
+function calculatePrice(b, p, r) {
+  const pickup = new Date(p), ret = new Date(r);
+  if (ret <= pickup) return { error: 'Return must be after pickup' };
+  const hours = Math.max(1, Math.round((ret - pickup) / 3600000));
+  const days = Math.max(1, Math.ceil(hours / 24));
+  let baseFare = 0;
+  if (days >= 30) baseFare = Math.floor(days / 30) * b.monthly + (days % 30) * b.daily;
+  else if (days >= 7) baseFare = Math.floor(days / 7) * b.weekly + (days % 7) * b.daily;
+  else baseFare = days * b.daily;
+  const gst = Math.round(baseFare * 0.05);
+  const total = baseFare + gst + b.deposit;
+  return { hours, days, baseFare, gst, deposit: b.deposit, total };
+}
+
+function renderCheckout(id) {
+  const b = BIKES.find(x => x.id === id);
+  const c = document.getElementById('checkoutContainer');
+  if (!b) {
+    c.innerHTML = `<div class="text-center py-16"><h2 class="text-2xl font-bold mb-2">Select a bike first</h2><a href="#fleet" class="text-brand">Browse Fleet →</a></div>`;
+    return;
+  }
+  State.activeBike = b;
+  State.checkout.step = 1;
+  State.checkout.pickup = State.search.pickup || toLocalInput(new Date(Date.now() + 2 * 3600000));
+  State.checkout.return = State.search.return || toLocalInput(new Date(Date.now() + 26 * 3600000));
+  State.checkout.customer = {};
+  c.innerHTML = `
+    <div class="text-xs text-slate-400 mb-4"><button onclick="navigate('fleet')" style="color:#94a3b8;">← Back to Fleet</button></div>
+    <div class="glass card p-6 mb-6">
+      <div class="text-brand text-xs font-bold uppercase tracking-wider">real Checkout</div>
+      <h1 class="text-2xl font-black mt-1">Confirm Booking</h1>
+    </div>
+    <div class="glass card p-4 row items-center gap-4 mb-6">
+      <img src="${b.img}" alt="${b.name}" style="width:80px;height:64px;object-fit:cover;border-radius:12px;" onerror="this.src='https://placehold.co/120x90/131e36/ff5722?text=Bike'">
+      <div class="flex-grow"><h3 class="font-bold">${b.name}</h3><div class="text-brand text-xs">${b.category} • ${b.cc}</div></div>
+      <div class="text-right"><div class="text-lg font-black text-brand">₹${b.daily}</div><div class="text-xs text-slate-400">/day</div></div>
+    </div>
+    <div class="steps-bar">
+      <div class="step active" id="step1"><div class="step-num">1</div><div class="step-lbl">Dates</div></div>
+      <div class="step-line"></div>
+      <div class="step" id="step2"><div class="step-num">2</div><div class="step-lbl">Details</div></div>
+      <div class="step-line"></div>
+      <div class="step" id="step3"><div class="step-num">3</div><div class="step-lbl">Confirm</div></div>
+    </div>
+    <div id="checkoutStep1" class="glass checkout-card">
+      <h2 class="font-bold text-lg mb-4">Step 1: Trip Dates</h2>
+      <div style="display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:16px;">
+        <div><label class="label">Pickup</label><input type="datetime-local" id="coPickup" value="${State.checkout.pickup}" onchange="checkoutRecalc()" class="input"></div>
+        <div><label class="label">Return</label><input type="datetime-local" id="coReturn" value="${State.checkout.return}" onchange="checkoutRecalc()" class="input"></div>
+      </div>
+      <div id="coPriceBox1" class="price-breakdown" style="background:var(--mid-950);border:1px solid var(--mid-700);"></div>
+      <button onclick="checkoutNext()" class="btn btn-primary btn-block mt-4">Next: Your Details →</button>
+    </div>
+    <div id="checkoutStep2" class="glass checkout-card hidden">
+      <h2 class="font-bold text-lg mb-4">Step 2: Your Details</h2>
+      <div style="display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:16px;">
+        <input type="text" id="coName" placeholder="Full Name *" class="input">
+        <input type="tel" id="coPhone" placeholder="Mobile (WhatsApp) *" class="input">
+        <input type="email" id="coEmail" placeholder="Email" class="input">
+        <input type="text" id="coDl" placeholder="Driving Licence No. *" class="input">
+      </div>
+      <div class="row gap-3">
+        <button onclick="checkoutBack()" class="btn btn-secondary flex-1">← Back</button>
+        <button onclick="checkoutNext()" class="btn btn-primary flex-1">Next: Confirm →</button>
+      </div>
+    </div>
+    <div id="checkoutStep3" class="glass checkout-card hidden">
+      <h2 class="font-bold text-lg mb-4">Step 3: Confirm & Book</h2>
+      <div id="coPriceBox3" class="price-breakdown" style="background:var(--mid-950);border:1px solid var(--mid-700);"></div>
+      <div class="row gap-3 mt-4">
+        <button onclick="checkoutBack()" class="btn btn-secondary flex-1">← Back</button>
+        <button onclick="submitBooking()" class="btn btn-primary flex-1">${ICONS.checkCircle} Confirm Booking</button>
+      </div>
+    </div>
+  `;
+  checkoutRecalc();
+}
+
+function checkoutRecalc() {
+  const b = State.activeBike;
+  if (!b) return;
+  const p = document.getElementById('coPickup')?.value;
+  const r = document.getElementById('coReturn')?.value;
+  if (!p || !r) return;
+  const calc = calculatePrice(b, p, r);
+  if (calc.error) return;
+  const html = `
+    <div class="price-row"><span>Duration</span><span class="val">${calc.days} Day(s) (${calc.hours} hrs)</span></div>
+    <div class="price-row"><span>Base Fare</span><span class="val">₹${calc.baseFare.toLocaleString('en-IN')}</span></div>
+    <div class="price-row"><span>GST (5%)</span><span class="val">₹${calc.gst.toLocaleString('en-IN')}</span></div>
+    <div class="price-row"><span>Deposit (Refundable)</span><span class="val" style="color:var(--emerald);">₹${calc.deposit.toLocaleString('en-IN')}</span></div>
+    <div class="price-row total"><span>Total Payable</span><span class="val">₹${calc.total.toLocaleString('en-IN')}</span></div>
+  `;
+  const b1 = document.getElementById('coPriceBox1');
+  const b3 = document.getElementById('coPriceBox3');
+  if (b1) b1.innerHTML = html;
+  if (b3) b3.innerHTML = html;
+}
+
+function checkoutNext() {
+  if (State.checkout.step === 1) {
+    const p = document.getElementById('coPickup').value;
+    const r = document.getElementById('coReturn').value;
+    if (!p || !r) return showToast('Pick both dates', 'error');
+    if (new Date(r) <= new Date(p)) return showToast('Return must be after pickup', 'error');
+    State.checkout.pickup = p;
+    State.checkout.return = r;
+  }
+  if (State.checkout.step === 2) {
+    const name = document.getElementById('coName').value.trim();
+    const phone = document.getElementById('coPhone').value.trim();
+    const dl = document.getElementById('coDl').value.trim();
+    const email = document.getElementById('coEmail').value.trim();
+    if (!name || !phone || !dl) return showToast('Fill all required fields', 'error');
+    State.checkout.customer = { name, phone, email, dl };
+  }
+  State.checkout.step++;
+  updateCheckoutStep();
+}
+
+function checkoutBack() {
+  if (State.checkout.step > 1) State.checkout.step--;
+  updateCheckoutStep();
+}
+
+function updateCheckoutStep() {
+  [1, 2, 3].forEach(n => {
+    const step = document.getElementById('step' + n);
+    if (step) step.classList.toggle('active', n === State.checkout.step);
+    const content = document.getElementById('checkoutStep' + n);
+    if (content) content.classList.toggle('hidden', n !== State.checkout.step);
+  });
+  checkoutRecalc();
+}
+
+function proceedToCheckout(id) {
+  const p = document.getElementById('detailPickup')?.value;
+  const r = document.getElementById('detailReturn')?.value;
+  if (p && r) {
+    State.search.pickup = p;
+    State.search.return = r;
+  }
+  navigate('checkout', id);
+}
+
+function submitBooking() {
+  const b = State.activeBike;
+  if (!b) return;
+  const calc = calculatePrice(b, State.checkout.pickup, State.checkout.return);
+  if (calc.error) return showToast(calc.error, 'error');
+  const c = State.checkout.customer;
+  if (!c.name || !c.phone || !c.dl) return showToast('Fill customer details', 'error');
+  const bookingId = 'RJB-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
+  const booking = {
+    id: bookingId,
+    createdAt: new Date().toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' }),
+    vehicleId: b.id, vehicleName: b.name, vehicleImage: b.img, category: b.category,
+    city: State.search.city || 'Varanasi',
+    customerName: c.name, customerPhone: c.phone, customerEmail: c.email, customerDl: c.dl,
+    pickupDate: State.checkout.pickup, returnDate: State.checkout.return,
+    days: calc.days, totalPayable: calc.total, deposit: calc.deposit,
+    status: 'Confirmed (real)'
+  };
+  Storage.saveBooking(booking);
+  showToast('🎉 Booking confirmed!', 'success');
+  navigate('voucher', bookingId);
+}
+
+function renderVoucher(id) {
+  const booking = Storage.getBookings().find(x => x.id === id);
+  const c = document.getElementById('voucherContainer');
+  if (!booking) {
+    c.innerHTML = `<div class="text-center py-16"><h2 class="text-2xl font-bold mb-2">Voucher not found</h2><a href="#bookings" class="text-brand">View Bookings →</a></div>`;
+    return;
+  }
+  c.innerHTML = `
+    <div class="glass voucher">
+      <div id="voucherPrint">
+        <div class="voucher-header">
+          <div class="check-icon">${ICONS.check}</div>
+          <div class="text-emerald text-xs font-bold uppercase tracking-widest">Reservation Confirmed</div>
+          <h2 class="text-2xl font-black mt-1">RanjeetBikers Voucher</h2>
+          <p class="text-xs text-slate-400 mt-1">Keep this slip ready at pickup.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;background:var(--mid-950);padding:16px;border-radius:16px;border:1px solid var(--mid-700);font-size:12px;margin-bottom:16px;">
+          <div><div class="text-slate-400 text-xs uppercase">Booking ID</div><div class="mono font-bold text-brand text-sm">${booking.id}</div></div>
+          <div class="text-right"><div class="text-slate-400 text-xs uppercase">Booked On</div><div class="text-white">${booking.createdAt}</div></div>
+        </div>
+        <div>
+          <div class="voucher-row"><span class="text-slate-400">Renter</span><span class="font-bold">${booking.customerName}</span></div>
+          <div class="voucher-row"><span class="text-slate-400">Mobile | DL</span><span class="font-bold">${booking.customerPhone} | ${booking.customerDl}</span></div>
+          <div class="voucher-row"><span class="text-slate-400">Bike</span><span class="font-bold">${booking.vehicleName}</span></div>
+          <div class="voucher-row"><span class="text-slate-400">Hub</span><span class="font-bold text-brand">${booking.city}</span></div>
+          <div class="voucher-row"><span class="text-slate-400">Pickup</span><span>${booking.pickupDate.replace('T', ' ')}</span></div>
+          <div class="voucher-row"><span class="text-slate-400">Return</span><span>${booking.returnDate.replace('T', ' ')}</span></div>
+          <div class="voucher-row"><span class="text-slate-400">Duration</span><span>${booking.days} Day(s)</span></div>
+          <div class="voucher-row"><span class="text-slate-400">Helpline</span><span class="font-bold text-brand">95557-85729</span></div>
+          <div class="voucher-row voucher-total"><span class="font-bold text-white">Total Payable</span><span class="text-brand font-black text-lg">₹${booking.totalPayable.toLocaleString('en-IN')}</span></div>
+        </div>
+      </div>
+      <div class="row gap-3 mt-6" style="flex-wrap:wrap;">
+        <button onclick="window.print()" class="btn btn-secondary flex-1">${ICONS.printer} Print / PDF</button>
+        <button onclick="navigate('bookings')" class="btn btn-primary flex-1">${ICONS.calendar} My Bookings</button>
+      </div>
+    </div>
+  `;
+}
+
+function renderBookings() {
+  const c = document.getElementById('bookingsList');
+  const bookings = Storage.getBookings();
+  if (!bookings.length) {
+    c.innerHTML = `<div class="empty-state glass">
+      <div class="empty-icon">${ICONS.calendarX}</div>
+      <h4>No Bookings Yet</h4>
+      <p>Browse our fleet and reserve your favorite ride now!</p>
+      <button class="btn btn-primary btn-sm" onclick="navigate('fleet')">Explore Fleet</button>
+    </div>`;
+    return;
+  }
+  c.innerHTML = bookings.map(b => `
+    <div class="glass booking-card">
+      <div class="row items-center gap-4" style="flex:1;">
+        <img src="${b.vehicleImage}" alt="${b.vehicleName}" class="booking-thumb" onerror="this.src='https://placehold.co/150x100/131e36/ff5722?text=Bike'">
+        <div class="booking-info">
+          <div class="booking-meta">
+            <span class="tag tag-brand mono">${b.id}</span>
+            <span class="tag tag-green">${b.status}</span>
+          </div>
+          <h4 class="font-bold text-base">${b.vehicleName}</h4>
+          <p class="text-xs text-slate-400">Pickup: ${b.pickupDate.replace('T', ' ')} • Hub: ${b.city}</p>
+        </div>
+      </div>
+      <div class="row md-col items-center justify-between gap-2" style="min-width:180px;">
+        <div class="text-right"><div class="text-xs text-slate-400">Total</div><div class="text-lg font-black">₹${b.totalPayable.toLocaleString('en-IN')}</div></div>
+        <div class="row gap-2">
+          <button class="btn btn-secondary btn-sm" onclick="navigate('voucher','${b.id}')">View</button>
+          <button class="btn btn-danger btn-sm" onclick="cancelBooking('${b.id}')">Cancel</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function cancelBooking(id) {
+  if (!confirm('Cancel this booking?')) return;
+  Storage.deleteBooking(id);
+  showToast('Booking cancelled', 'info');
+  renderBookings();
+  renderNav();
+}
+
+function clearAllBookings() {
+  if (!confirm('Clear all bookings?')) return;
+  Storage.clearBookings();
+  showToast('All bookings cleared', 'info');
+  renderBookings();
+  renderNav();
+}
+
+function toggleWishlist(id) {
+  const added = Storage.toggleWishlist(id);
+  showToast(added ? 'Added to Wishlist ❤️' : 'Removed from Wishlist', added ? 'success' : 'info');
+  renderNav();
+  if (State.view === 'wishlist') renderWishlist();
+  else if (State.view === 'fleet') applyFilters();
+  else if (State.view === 'home') renderHome();
+  else if (State.view === 'bike') renderBikeDetail(id);
+}
+
+function renderWishlist() {
+  const c = document.getElementById('wishlistGrid');
+  const ids = Storage.getWishlist();
+  const bikes = BIKES.filter(b => ids.includes(b.id));
+  if (!bikes.length) {
+    c.innerHTML = `<div class="empty-state glass" style="grid-column:1/-1;">
+      <div class="empty-icon">${ICONS.heart}</div>
+      <h4>Wishlist is Empty</h4>
+      <p>Tap the heart on any bike to save it for later.</p>
+      <button class="btn btn-primary btn-sm" onclick="navigate('fleet')">Explore Bikes</button>
+    </div>`;
+    return;
+  }
+  c.innerHTML = bikes.map(b => bikeCard(b, false)).join('');
+}
+
+function clearAllWishlist() {
+  Storage.clearWishlist();
+  showToast('Wishlist cleared', 'info');
+  renderWishlist();
+  renderNav();
+}
+
+function renderHubs() {
+  document.getElementById('hubsGrid').innerHTML = HUBS.map(h => `
+    <div class="glass hub-card">
+      <div class="hub-icon">${ICONS.mapPin}</div>
+      <h3 class="font-bold text-base">${h.city}</h3>
+      <p class="text-xs text-slate-400 mt-1">${h.address}</p>
+      <a href="tel:${h.phone}" class="text-xs text-brand font-semibold mt-3 row items-center gap-1">${ICONS.phone} 95557-85729</a>
+    </div>
+  `).join('');
+}
+
+function renderFaqs() {
+  document.getElementById('faqList').innerHTML = FAQS.map((f, i) => `
+    <div class="glass faq-item" id="faq${i}">
+      <button class="faq-question" onclick="toggleFaq(${i})">
+        <span>${f.q}</span>
+        <span class="faq-icon">${ICONS.chevronDown}</span>
+      </button>
+      <div class="faq-answer">${f.a}</div>
+    </div>
+  `).join('');
+}
+
+function toggleFaq(i) {
+  document.getElementById('faq' + i).classList.toggle('open');
+}
+
+function toLocalInput(d) {
+  const pad = n => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+
+function showToast(msg, type = 'info') {
+  const container = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  t.className = `toast toast-${type}`;
+  t.innerText = msg;
+  container.appendChild(t);
+  requestAnimationFrame(() => requestAnimationFrame(() => t.classList.add('show')));
+  setTimeout(() => {
+    t.classList.remove('show');
+    setTimeout(() => t.remove(), 300);
+  }, 3200);
+}
+
+window.addEventListener('hashchange', router);
+window.addEventListener('DOMContentLoaded', () => {
+  if (!location.hash) location.hash = '#home';
+  router();
+  new Image().src = HERO_IMAGES[0];
+});
+</script>
+</body>
+</html>
